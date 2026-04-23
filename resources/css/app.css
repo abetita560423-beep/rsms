@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@source "../views/**/*.blade.php";
+@source "../js/**/*.js";
+
+:root {
+    --brand-deep: #0f3a5f;
+    --brand-blue: #1f6aa8;
+    --brand-sand: #f5f7fb;
+    --brand-line: #dbe4ef;
+}
+
+body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+.hero-gradient {
+    background:
+        radial-gradient(circle at 8% 4%, #d7ecff 0, transparent 32%),
+        radial-gradient(circle at 88% 10%, #dff5ea 0, transparent 35%),
+        linear-gradient(180deg, #f8fbff 0%, #eef4fa 100%);
+}
+
+.card-surface {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+}
