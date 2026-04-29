@@ -66,7 +66,7 @@
                         </a>
                     @endif
                     <div class="d-block">
-                        <span class="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2 fw-bold">{{ strtoupper($property->type) }}</span>
+                        <span class="badge bg-primary text-white mb-2 px-3 py-2 fw-bold" style="letter-spacing: 1px;">{{ strtoupper($property->type) }}</span>
                         <h2 class="display-5 fw-bolder text-primary mb-0">₱{{ number_format($property->price, 0) }}</h2>
                     </div>
                 </div>

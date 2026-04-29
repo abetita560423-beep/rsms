@@ -19,7 +19,7 @@ RUN printf '<Directory /var/www/html/public>\n\
 </Directory>\n' > /etc/apache2/conf-available/laravel.conf \
  && a2enconf laravel
 
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
  && apt-get install -y nodejs
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -32,7 +32,7 @@ RUN cp .env.example .env || true
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-RUN npm ci
+RUN npm install
 RUN npm run build
 
 RUN php artisan key:generate || true

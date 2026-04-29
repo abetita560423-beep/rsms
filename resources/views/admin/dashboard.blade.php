@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <h3 class="fw-bold mb-0">₱{{ number_format($stats['revenue'] ?? 0, 2) }}</h3>
-                <p class="small mb-0 fw-bold text-uppercase opacity-75">Total Revenue</p>
+                <p class="small mb-0 fw-bold text-uppercase opacity-75">Total User Earnings</p>
             </div>
         </div>
     </div>

@@ -26,6 +26,11 @@ class User extends Authenticatable
         self::ROLE_SELLER,
     ];
 
+    public const CUSTOMER_ROLES = [
+        self::ROLE_BUYER,
+        self::ROLE_SELLER,
+    ];
+
     /**
      * The attributes that are mass assignable.
      *

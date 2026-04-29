@@ -4,8 +4,8 @@
     </x-slot>
 
     <div class="row g-4 mb-5">
-        <div class="col-md-4">
-            <div class="card p-4">
+        <div class="col-md-3">
+            <div class="card p-4 h-100">
                 <div class="d-flex align-items-center gap-3">
                     <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-houses" viewBox="0 0 16 16"><path d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5A1.5 1.5 0 0 0 3.5 14h.11c.11.207.265.383.45.517A2.5 2.5 0 0 1 3.5 15h-.11a.5.5 0 0 1-.41-.832L3 14.168V12.5A2.5 2.5 0 0 1 5.5 10h.707L5.793 1ZM14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h9Zm-9-1A1.5 1.5 0 0 0 4 3.5v9A1.5 1.5 0 0 0 5.5 14h9a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-9Z"/></svg>
@@ -17,8 +17,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card p-4">
+        <div class="col-md-3">
+            <div class="card p-4 h-100">
                 <div class="d-flex align-items-center gap-3">
                     <div class="bg-success bg-opacity-10 text-success rounded-3 p-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16"><path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/><path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/></svg>
@@ -30,8 +30,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card p-4">
+        <div class="col-md-3">
+            <div class="card p-4 h-100">
                 <div class="d-flex align-items-center gap-3">
                     <div class="bg-info bg-opacity-10 text-info rounded-3 p-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16"><path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853.854a.5.5 0 0 0 .708 0l.646-.647.646.647a.5.5 0 0 0 .708 0l.646-.647.646.647a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0 0-.708l-1.5-1.5a.5.5 0 0 0-.708 0l-.646.647-.646-.647a.5.5 0 0 0-.708 0l-.646.647-.646-.647a.5.5 0 0 0-.708 0l-.646.647h-.793a.5.5 0 0 1-.354-.146L7.163 6.5a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/></svg>
@@ -39,6 +39,19 @@
                     <div>
                         <h3 class="fw-bold text-dark mb-0">{{ $stats['for_rent'] }}</h3>
                         <p class="text-secondary small mb-0 fw-bold">FOR RENT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-4 bg-primary text-white h-100 border-0 shadow">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-white bg-opacity-20 text-white rounded-3 p-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16"><path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.5-1.5H2V1.78a1.5 1.5 0 0 1 1.864-1.454L12.136.326zM14 5.5a.5.5 0 0 0-.5-.5h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="fw-bold mb-0">₱{{ number_format($stats['revenue'] ?? 0, 0) }}</h3>
+                        <p class="small mb-0 fw-bold text-uppercase opacity-75">MY EARNINGS</p>
                     </div>
                 </div>
             </div>

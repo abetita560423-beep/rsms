@@ -1,0 +1,17 @@
+
+> build
+> vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+
+[1m[33mwarn[39m[22m - The `content` option in your Tailwind CSS configuration is missing or empty.
+[1m[33mwarn[39m[22m - Configure your content sources or your generated CSS will be missing styles.
+[1m[33mwarn[39m[22m - https://tailwindcss.com/docs/content-configuration
+[32m✓[39m 53 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mpublic/build/[22m[32mmanifest.json            [39m[1m[2m 0.33 kB[22m[1m[22m[2m │ gzip:  0.17 kB[22m
+[2mpublic/build/[22m[35massets/app-tn0RQdqM.css  [39m[1m[2m 0.00 kB[22m[1m[22m[2m │ gzip:  0.02 kB[22m
+[2mpublic/build/[22m[36massets/app-BuG9aa18.js   [39m[1m[2m37.17 kB[22m[1m[22m[2m │ gzip: 14.87 kB[22m
+[32m✓ built in 1.64s[39m

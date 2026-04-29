@@ -32,9 +32,10 @@ class PropertyController extends Controller
         return view('seller.dashboard', [
             'properties' => $properties,
             'stats' => [
-                'total' => $properties->total(),
+                'total' => $request->user()->properties()->count(),
                 'for_sale' => $request->user()->properties()->where('type', Property::TYPE_SALE)->count(),
                 'for_rent' => $request->user()->properties()->where('type', Property::TYPE_RENT)->count(),
+                'revenue' => \App\Models\Deal::where('seller_id', $request->user()->id)->where('status', \App\Models\Deal::STATUS_COMPLETED)->sum('amount'),
             ]
         ]);
     }
