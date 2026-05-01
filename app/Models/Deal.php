@@ -9,6 +9,7 @@ class Deal extends Model
     protected $table = 'transactions';
 
     public const STATUS_PENDING = 'pending';
+    public const STATUS_BUYER_CONFIRMED = 'buyer_confirmed';
     public const STATUS_COMPLETED = 'completed';
     public const STATUS_CANCELLED = 'cancelled';
 
@@ -19,6 +20,8 @@ class Deal extends Model
         'inquiry_id',
         'amount',
         'status',
+        'seller_note',
+        'buyer_confirmed_at',
     ];
 
     public function property()

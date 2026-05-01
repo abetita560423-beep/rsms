@@ -45,6 +45,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
     Route::get('/seller/transactions', [TransactionController::class, 'sellerTransactions'])->name('seller.transactions');
     Route::get('/buyer/transactions', [TransactionController::class, 'buyerTransactions'])->name('buyer.transactions');
+    Route::post('/transactions/payment-request', [TransactionController::class, 'sendPaymentRequest'])->name('transactions.payment-request');
+    Route::post('/transactions/{deal}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
+    Route::post('/transactions/{deal}/finalize', [TransactionController::class, 'finalize'])->name('transactions.finalize');
 });
 
 Route::middleware(['auth', 'role:admin,staff,seller'])->group(function () {

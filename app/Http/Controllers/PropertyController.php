@@ -201,7 +201,7 @@ class PropertyController extends Controller
             'bathrooms' => ['required', 'integer', 'min:0'],
             'sqft' => ['required', 'integer', 'min:0'],
             'images' => [$creating ? 'required' : 'nullable', 'array', 'max:8'],
-            'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:102400'],
             'remove_images' => ['nullable', 'array'],
             'remove_images.*' => ['integer', Rule::exists('property_images', 'id')],
         ];

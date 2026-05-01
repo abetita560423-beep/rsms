@@ -19,6 +19,8 @@
         "vite": "^7.0.7"
     },
     "dependencies": {
-        "bootstrap": "^5.3.8"
+        "bootstrap": "^5.3.8",
+        "docx": "^9.6.1",
+        "pdf-parse": "^2.4.5"
     }
 }

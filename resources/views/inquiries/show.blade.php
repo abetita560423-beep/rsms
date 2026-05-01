@@ -48,19 +48,6 @@
 
                     <!-- Reply Input -->
                     <div class="card-footer bg-white border-top-0 p-4 pt-0">
-                        @if(auth()->id() === $inquiry->receiver_id && $inquiry->property->status === \App\Models\Property::STATUS_APPROVED)
-                            <div class="mb-4 p-3 bg-light rounded-4 border">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="fw-bold mb-1">Finalize Agreement</h6>
-                                        <p class="small text-muted mb-0">Record this transaction and mark the property as sold/rented.</p>
-                                    </div>
-                                    <button type="button" class="btn btn-success rounded-pill px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#finalizeModal">
-                                        Finalize Deal
-                                    </button>
-                                </div>
-                            </div>
-                        @endif
 
                         <form action="{{ route('inquiry.reply', $inquiry) }}" method="POST">
                             @csrf
@@ -103,42 +90,4 @@
         .bg-light { background-color: #f8f9fc !important; }
     </style>
 
-    <!-- Finalize Modal -->
-    @if(auth()->id() === $inquiry->receiver_id)
-    <div class="modal fade" id="finalizeModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow rounded-4">
-                <div class="modal-header border-0 pt-4 px-4">
-                    <h5 class="modal-title fw-bold">Finalize Agreement</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ route('transactions.store') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="inquiry_id" value="{{ $inquiry->id }}">
-                    <input type="hidden" name="property_id" value="{{ $inquiry->property_id }}">
-                    <input type="hidden" name="buyer_id" value="{{ $inquiry->sender_id }}">
-                    <input type="hidden" name="seller_id" value="{{ $inquiry->receiver_id }}">
-                    
-                    <div class="modal-body px-4 pb-4">
-                        <p class="text-secondary small mb-4">Confirm the final agreed price for this transaction. This will mark the property as {{ $inquiry->property->type === 'sale' ? 'SOLD' : 'RENTED' }}.</p>
-                        
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold text-uppercase text-muted">Final Price (₱)</label>
-                            <input type="number" name="amount" class="form-control form-control-lg bg-light border-0 rounded-4" value="{{ $inquiry->property->price }}" required min="0">
-                        </div>
-
-                        <div class="alert alert-info border-0 rounded-4 small">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill me-2" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
-                            This action is permanent and will be recorded in the system revenue.
-                        </div>
-                    </div>
-                    <div class="modal-footer border-0 px-4 pb-4">
-                        <button type="button" class="btn btn-light rounded-pill px-4 fw-bold" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success rounded-pill px-4 fw-bold shadow-sm">Confirm & Finalize</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @endif
 </x-app-layout>

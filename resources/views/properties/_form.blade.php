@@ -102,7 +102,7 @@
             <label for="images" class="form-label fw-bold text-dark mb-1">
                 {{ $isEditing ? 'Add More Images (optional)' : 'Property Images' }}
             </label>
-            <p class="text-secondary small mb-3">Upload up to 8 images total (JPG, PNG, WEBP). Max 5MB per image.</p>
+            <p class="text-secondary small mb-3">Upload up to 8 images total (JPG, PNG, WEBP). Max 100MB per image.</p>
             <input class="form-control @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror" type="file" id="images" name="images[]" multiple accept="image/png,image/jpeg,image/webp" {{ $isEditing ? '' : 'required' }}>
             @error('images')
                 <div class="invalid-feedback">{{ $message }}</div>

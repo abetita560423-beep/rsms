@@ -43,4 +43,9 @@ class Inquiry extends Model
     {
         return $this->belongsTo(Inquiry::class, 'parent_id');
     }
+
+    public function deal()
+    {
+        return $this->hasOne(Deal::class, 'inquiry_id');
+    }
 }

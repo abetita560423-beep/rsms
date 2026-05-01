@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SummitHub Project Documentation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #000;
+            margin: 40px;
+            text-align: justify;
+        }
+        h1, h2, h3, h4 {
+            color: #000;
+            text-transform: uppercase;
+        }
+        h2 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+        h3 {
+            margin-top: 30px;
+        }
+        .figure {
+            text-align: center;
+            margin: 20px 0;
+            page-break-inside: avoid;
+        }
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .caption {
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .content-section {
+            margin-bottom: 30px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1>SummitHub: Real Estate Management System (RSMS)</h1>
+        <p>PROJECT DOCUMENTATION</p>
+    </div>
+
+    <hr>
+
+    <div class="content-section">
+        <h2>CHAPTER I: THE PROBLEM AND ITS BACKGROUND</h2>
+        
+        <h3>I. Introduction</h3>
+        <p>
+            SummitHub is a comprehensive Real Estate Management System (RSMS) developed to modernize the property transaction process. In an era where digital presence is paramount, SummitHub serves as a bridge between property sellers and potential buyers, offering a streamlined platform for property listing, discovery, and communication. The system is built using the Laravel framework, leveraging its robust security features and MVC architecture to ensure a seamless experience for all users.
+        </p>
+
+        <h3>II. Purpose and Value Proposition</h3>
+        <p>
+            The primary purpose of SummitHub is to provide a centralized marketplace for real estate. 
+            <ul>
+                <li><strong>Efficiency:</strong> Reduces the time taken to list and discover properties.</li>
+                <li><strong>Transparency:</strong> Provides detailed property specifications and direct communication channels.</li>
+                <li><strong>Quality Control:</strong> Features an administrative moderation layer to verify listings before they go public.</li>
+                <li><strong>Value:</strong> For sellers, it offers a broader reach; for buyers, it provides a curated and searchable database of properties.</li>
+            </ul>
+        </p>
+
+        <h3>III. Target Audience</h3>
+        <p>
+            1. <strong>Buyers:</strong> Individuals looking to purchase or rent properties. They can explore listings, filter by criteria, and send inquiries.<br>
+            2. <strong>Sellers/Agents:</strong> Users who want to list their properties. They have access to a dedicated dashboard to manage their listings and respond to leads.<br>
+            3. <strong>Staff/Moderators:</strong> Internal users responsible for reviewing and approving property listings to maintain platform integrity.<br>
+            4. <strong>Administrators:</strong> System overseers who manage user roles and overall platform health.
+        </p>
+
+        <h3>IV. Core Functionalities</h3>
+        <p>
+            - <strong>Dynamic Property Listing:</strong> Sellers can upload property details, including pricing, location, and images.<br>
+            - <strong>Search and Filter System:</strong> A powerful explore page allows buyers to find properties based on keywords and categories.<br>
+            - <strong>Inquiry Management:</strong> A built-in messaging system allows buyers to contact sellers directly.<br>
+            - <strong>Role-Based Dashboards:</strong> Customized interfaces for different user roles (Buyer, Seller, Staff, Admin).<br>
+            - <strong>Moderation Workflow:</strong> Listings must be approved by staff before appearing in the public catalog.
+        </p>
+
+        <h3>V. Technical Feasibility</h3>
+        <p>
+            The system is built on the <strong>Laravel Framework</strong>, ensuring scalability, security through built-in protection against common web vulnerabilities (CSRF, XSS, SQL injection), and maintainability via a clean code structure using Eloquent ORM and Blade templating.
+        </p>
+    </div>
+
+    <hr>
+
+    <div class="content-section">
+        <h2>CHAPTER II: DESIGN AND ARCHITECTURE</h2>
+
+        <h3>VI. Wireframes and Visual Design</h3>
+        <p>The following images represent the actual user interface design of the SummitHub system:</p>
+
+        <div class="figure">
+            <img src="file:///C:/Users/AaronPaul%20Betita/.gemini/antigravity/brain/f47de9fc-814e-4b1c-bad1-f571e9cfee51/homepage_1777560853245.png" alt="Homepage">
+            <div class="caption">Figure 1: The SummitHub Homepage featuring the hero section and primary navigation.</div>
+        </div>
+
+        <div class="figure">
+            <img src="file:///C:/Users/AaronPaul%20Betita/.gemini/antigravity/brain/f47de9fc-814e-4b1c-bad1-f571e9cfee51/explore_1777560863118.png" alt="Explore Page">
+            <div class="caption">Figure 2: The Explore Page showing property filters and listing area.</div>
+        </div>
+
+        <h3>VII. Task Analysis</h3>
+        <p>
+            The typical workflow for a property transaction in SummitHub:
+            1. <strong>User Registration:</strong> A user creates an account and selects a role.<br>
+            2. <strong>Property Listing:</strong> The Seller adds a new property through their dashboard.<br>
+            3. <strong>Moderation:</strong> Staff reviews and approves the listing.<br>
+            4. <strong>Property Discovery:</strong> A Buyer finds the property on the Explore page.<br>
+            5. <strong>Inquiry:</strong> The Buyer sends a message to the Seller regarding the property.<br>
+            6. <strong>Engagement:</strong> The Seller views the inquiry and communicates with the Buyer to close the deal.
+        </p>
+
+        <h3>VIII. Gantt Chart</h3>
+        <p><em>(Placeholder: The project was developed over a period of 4 weeks, covering Requirements Gathering, UI/UX Design, Backend Development, and Testing phases.)</em></p>
+
+        <h3>IX. Entity Relationship Diagram (ERD)</h3>
+        <p>
+            The database schema is designed to support complex relationships:
+            - <strong>Users:</strong> Stores core identity and role information.<br>
+            - <strong>Properties:</strong> Linked to a User (Owner) and contains all property attributes.<br>
+            - <strong>Inquiries:</strong> Connects a Buyer (User) to a Property and its Seller.<br>
+            - <strong>Roles:</strong> Defines the permissions and dashboard access for each user.
+        </p>
+    </div>
+
+    <hr>
+
+    <div class="content-section">
+        <h2>CHAPTER III: USER INTERFACE MANUAL</h2>
+
+        <h3>X. User Interface Manual</h3>
+
+        <h5>1. Accessing the System</h5>
+        <div class="figure">
+            <img src="file:///C:/Users/AaronPaul%20Betita/.gemini/antigravity/brain/f47de9fc-814e-4b1c-bad1-f571e9cfee51/login_page_1777560890483.png" alt="Login Page">
+            <div class="caption">Figure 3: Secure Login Interface.</div>
+        </div>
+
+        <h5>2. The User Dashboard</h5>
+        <div class="figure">
+            <img src="file:///C:/Users/AaronPaul%20Betita/.gemini/antigravity/brain/f47de9fc-814e-4b1c-bad1-f571e9cfee51/dashboard_1777560967599.png" alt="Dashboard">
+            <div class="caption">Figure 4: The Seller Dashboard overview.</div>
+        </div>
+
+        <h5>3. Property Management</h5>
+        <div class="figure">
+            <img src="file:///C:/Users/AaronPaul%20Betita/.gemini/antigravity/brain/f47de9fc-814e-4b1c-bad1-f571e9cfee51/property_management_1777560961641.png" alt="Property Management">
+            <div class="caption">Figure 5: Property Management Table.</div>
+        </div>
+
+        <h5>4. Handling Inquiries</h5>
+        <div class="figure">
+            <img src="file:///C:/Users/AaronPaul%20Betita/.gemini/antigravity/brain/f47de9fc-814e-4b1c-bad1-f571e9cfee51/inquiries_page_1777560971836.png" alt="Inquiries">
+            <div class="caption">Figure 6: The Inquiry Management System.</div>
+        </div>
+
+        <h3>XI. Feature Highlights</h3>
+        <p>
+            - <strong>Responsive Design:</strong> The system is fully optimized for both desktop and mobile viewing.<br>
+            - <strong>Real-time Status Updates:</strong> Property status (Pending, Approved, Rejected) is updated dynamically.<br>
+            - <strong>Secure Authentication:</strong> Uses Laravel Breeze for industry-standard authentication and session management.
+        </p>
+    </div>
+
+</body>
+</html>
