@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\Property;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class ModerationController extends Controller
         $property->update(['status' => Property::STATUS_APPROVED]);
 
         $property->owner->notifications()->create([
-            'type' => 'property_approved',
+            'type' => Notification::TYPE_PROPERTY_APPROVED,
             'message' => "Your property '{$property->title}' has been approved.",
         ]);
 
@@ -49,7 +50,7 @@ class ModerationController extends Controller
         $property->update(['status' => Property::STATUS_REJECTED]);
 
         $property->owner->notifications()->create([
-            'type' => 'property_rejected',
+            'type' => Notification::TYPE_PROPERTY_REJECTED,
             'message' => "Your property '{$property->title}' has been rejected.",
         ]);
 

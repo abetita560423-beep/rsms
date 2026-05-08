@@ -122,7 +122,10 @@
                             <td class="px-4 py-3">
                                 <div class="fw-bold text-dark">₱{{ number_format($deal->amount, 0) }}</div>
                                 @if($deal->buyer_confirmed_at)
-                                    <small class="text-primary fw-bold">Buyer paid: {{ $deal->buyer_confirmed_at->format('M d, H:i') }}</small>
+                                    <small class="text-primary fw-bold">
+                                        Buyer paid:
+                                        {{ \Illuminate\Support\Carbon::parse($deal->buyer_confirmed_at)->format('M d, H:i') }}
+                                    </small>
                                 @endif
                             </td>
                             <td class="px-4 py-3">
@@ -148,6 +151,13 @@
                                         @csrf
                                         <button type="submit" class="btn btn-primary btn-sm rounded-pill px-3 fw-bold shadow-sm" onclick="return confirm('Confirm that you have received the payment of ₱{{ number_format($deal->amount, 0) }}?')">
                                             Verify & Done
+                                        </button>
+                                    </form>
+                                @elseif($deal->status === 'pending')
+                                    <form action="{{ route('transactions.reject', $deal) }}" method="POST" class="m-0">
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold" onclick="return confirm('Cancel this offer?')">
+                                            Cancel Offer
                                         </button>
                                     </form>
                                 @else

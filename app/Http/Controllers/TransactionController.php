@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Deal;
 use App\Models\Inquiry;
+use App\Models\Notification;
 use App\Models\Property;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -109,7 +110,7 @@ class TransactionController extends Controller
 
         // Notify buyer
         User::find($inquiry->sender_id)->notifications()->create([
-            'type'    => 'payment_request',
+            'type'    => Notification::TYPE_PAYMENT_REQUEST,
             'message' => "You have received a payment request of ₱" . number_format($validated['amount'], 0) . " for '{$inquiry->property->title}'. Please review it in My Purchases.",
         ]);
 
@@ -137,11 +138,30 @@ class TransactionController extends Controller
 
         // Notify seller
         User::find($deal->seller_id)->notifications()->create([
-            'type'    => 'buyer_confirmed_payment',
+            'type'    => Notification::TYPE_BUYER_CONFIRMED_PAYMENT,
             'message' => "The buyer has confirmed sending payment for '{$deal->property->title}'. Please verify and finalize the deal.",
         ]);
 
         return back()->with('status', 'Confirmation sent! Awaiting seller to verify receipt and finalize.');
+    }
+
+    /**
+     * Buyer or seller rejects a pending offer.
+     */
+    public function reject(Request $request, Deal $deal): RedirectResponse
+    {
+        $isParticipant = in_array(auth()->id(), [$deal->buyer_id, $deal->seller_id], true);
+        if (! $isParticipant) {
+            abort(403);
+        }
+
+        if ($deal->status !== Deal::STATUS_PENDING) {
+            return back()->with('error', 'Only pending offers can be rejected.');
+        }
+
+        $deal->update(['status' => Deal::STATUS_CANCELLED]);
+
+        return back()->with('status', 'Offer rejected successfully.');
     }
 
     /**
@@ -170,7 +190,7 @@ class TransactionController extends Controller
 
             // Notify buyer
             User::find($deal->buyer_id)->notifications()->create([
-                'type'    => 'deal_finalized',
+                'type'    => Notification::TYPE_DEAL_FINALIZED,
                 'message' => "The seller has confirmed receipt of payment for '{$property->title}'. The deal is now complete!",
             ]);
 
@@ -207,7 +227,7 @@ class TransactionController extends Controller
             $property->update(['status' => $newStatus]);
 
             User::find($validated['buyer_id'])->notifications()->create([
-                'type'    => 'transaction_finalized',
+                'type'    => Notification::TYPE_DEAL_FINALIZED,
                 'message' => "Congratulations! The agreement for '{$property->title}' has been finalized for ₱" . number_format($validated['amount'], 2),
             ]);
 

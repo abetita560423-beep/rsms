@@ -96,9 +96,17 @@
                             </td>
                             <td class="px-4 py-3 text-end">
                                 @if($deal->status === 'pending')
-                                    <button class="btn btn-success btn-sm rounded-pill px-3 fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#confirmModal-{{ $deal->id }}">
-                                        Confirm & Send Payment
-                                    </button>
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <button class="btn btn-success btn-sm rounded-pill px-3 fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#confirmModal-{{ $deal->id }}">
+                                            Confirm & Send Payment
+                                        </button>
+                                        <form action="{{ route('transactions.reject', $deal) }}" method="POST" class="m-0">
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold" onclick="return confirm('Reject this offer?')">
+                                                Reject Offer
+                                            </button>
+                                        </form>
+                                    </div>
                                 @else
                                     <span class="text-muted small">—</span>
                                 @endif

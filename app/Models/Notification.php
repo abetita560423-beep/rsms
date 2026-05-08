@@ -10,6 +10,15 @@ class Notification extends Model
 {
     use HasFactory;
 
+    public const TYPE_NEW_INQUIRY = 'new_inquiry';
+    public const TYPE_PAYMENT_REQUEST = 'payment_request';
+    public const TYPE_DEAL_FINALIZED = 'deal_finalized';
+    public const TYPE_PROPERTY_APPROVED = 'property_approved';
+    public const TYPE_PROPERTY_REJECTED = 'property_rejected';
+    public const TYPE_NEW_MESSAGE = 'new_message';
+    public const TYPE_BUYER_CONFIRMED_PAYMENT = 'buyer_confirmed_payment';
+    public const TYPE_TRANSACTION_FINALIZED = 'transaction_finalized';
+
     protected $fillable = [
         'user_id',
         'type',

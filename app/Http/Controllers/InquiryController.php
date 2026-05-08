@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inquiry;
+use App\Models\Notification;
 use App\Models\Property;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class InquiryController extends Controller
         ]);
 
         $property->owner->notifications()->create([
-            'type' => 'new_inquiry',
+            'type' => Notification::TYPE_NEW_INQUIRY,
             'message' => "You have received a new inquiry for '{$property->title}'.",
         ]);
 
@@ -110,7 +111,7 @@ class InquiryController extends Controller
 
         // Notify the other party
         \App\Models\User::find($receiver_id)->notifications()->create([
-            'type' => 'new_message',
+            'type' => Notification::TYPE_NEW_MESSAGE,
             'message' => "You have a new message from " . auth()->user()->name . " regarding '{$inquiry->property->title}'.",
         ]);
 

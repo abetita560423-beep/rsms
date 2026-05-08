@@ -106,10 +106,16 @@
                                         <small class="text-muted">₱{{ number_format($approval->price, 0) }}</small>
                                     </td>
                                     <td class="pe-4 py-3 text-end">
-                                        <form action="{{ route('admin.property.approve', $approval) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-success px-3 fw-bold rounded-pill">Approve</button>
-                                        </form>
+                                        <div class="d-inline-flex gap-2">
+                                            <form action="{{ route('admin.property.approve', $approval) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-success px-3 fw-bold rounded-pill">Approve</button>
+                                            </form>
+                                            <form action="{{ route('admin.property.reject', $approval) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-outline-danger px-3 fw-bold rounded-pill" onclick="return confirm('Reject this listing?')">Reject</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
