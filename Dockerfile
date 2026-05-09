@@ -41,7 +41,9 @@ RUN php artisan storage:link || true
 RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache public/uploads \
  && chown -R www-data:www-data storage bootstrap/cache public/uploads \
  && chmod -R 775 storage bootstrap/cache public/uploads
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
 EXPOSE 10000
 
-CMD ["apache2-foreground"]
+CMD ["start.sh"]
